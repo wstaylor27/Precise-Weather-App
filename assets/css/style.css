@@ -1,0 +1,6 @@
+header {
+    text-align: center;
+    background: linear-gradient(.25turn, rgb(89, 145, 219), 10%, rgb(41, 10, 153));
+    color: white;
+    height: 60px;
+}
