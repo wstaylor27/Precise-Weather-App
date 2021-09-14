@@ -5,54 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Precise Weather App</title>
 
 </head>
 
-<header>
-    <h1>Weather Dashboard</h1>
-</header>
-
 <body>
-    <div
-        class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-        <div class="col-12 col-md-3 bg-light p-3">
-            <h1 class="text-primary">Search For A City</h1>
-            <form id="search-form" class="mb-2">
-                <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-                <button class="btn btn-info btn-block">Search</button>
-            </form>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-3 p-2 search-column">
+
+                <form id="search-form" class="mb-2">
+                    <h1 class="text-primary">Search For A City</h1>
+                    <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+                    <button class="btn btn-info btn-block">Search</button>
+                </form>
+                <div class="past-search border" id="past-search-buttons"></div>
 
 
-        </div>
+            </div>
 
-        <div class="col-12 col-md-9 p-3 text-light">
-            <div class="row mr-0">
-                <div class="col-lg-11 card m-3" id="result-city">
-                    <div class="card-body">
-                        <h3 id="city-name" class="city-name align-middle"></h3>
-                        <img id="current-pic">
-                        <p id="temperature"></p>
-                        <p id="humidity"></p>
-                        <p id="wind-speed"></p>
-                        <p id="UV-index"></p>
+
+            <div class="col-12 col-md-9">
+                <div class="row border selected-city" id="current-forecast">
+                    <div class="col-12">
+                        <h2 id="searched-city"></h2>
+                        <div id="current-weather-container" class="list-group"></div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <div class="row border" id="five-day-forecast">
+                        <h2 class="col-12" id="forecast"></h2>
+                        <div class="d-flex" id="fiveday-container"></div>
                     </div>
                 </div>
             </div>
-
-            <div>
-                <h2>Five Day Forecasts <span id="result-text"></span></h2>
-                <div class="row">
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-                </div>
-            </div>
         </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="./assets/script/script.js"></script>
 </body>
 
 </html>
