@@ -28,7 +28,7 @@ var saveSearch = function () {
     localStorage.setItem("cities", JSON.stringify(cities));
 };
 
-// getApi function is called when search form is pressed
+//Api function is called when search form is pressed
 var getCityWeather = function (city) {
     var apiKey = "844421298d794574c100e3409cee0499"
     var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
@@ -46,31 +46,36 @@ var getCityWeather = function (city) {
 };
 
 var displayWeather = function (weather, searchCity) {
-    //clear old content
+    //clears old content
     weatherCardEl.textContent = "";
     resultInputEl.textContent = searchCity;
 
-    //create date element
+    //creates date element
     var currentDate = document.createElement("span")
     currentDate.textContent = " (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
     resultInputEl.appendChild(currentDate);
 
+    //adds weather img
     var weatherIcon = document.createElement("img")
     weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
     resultInputEl.appendChild(weatherIcon);
 
+    //adds temp
     var temperatureEl = document.createElement("span");
     temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
     temperatureEl.classList = "list-group-item"
 
+    // adds humidity
     var humidityEl = document.createElement("span");
     humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
     humidityEl.classList = "list-group-item"
 
+    // adds wind speed
     var windSpeedEl = document.createElement("span");
     windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
     windSpeedEl.classList = "list-group-item"
 
+    // appends elements to card
     weatherCardEl.appendChild(temperatureEl);
     weatherCardEl.appendChild(humidityEl);
     weatherCardEl.appendChild(windSpeedEl);
