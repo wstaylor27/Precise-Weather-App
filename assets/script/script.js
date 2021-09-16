@@ -9,7 +9,7 @@ var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 var forecastTitle = document.querySelector("#forecast");
 
 
-var formSumbitHandler = function (event) {
+var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = cityInputEl.value.trim();
     if (city) {
@@ -93,7 +93,7 @@ var getUvIndex = function (lat, lon) {
         .then(function (response) {
             response.json().then(function (data) {
                 displayUvIndex(data)
-                // console.log(data)
+                console.log(data)
             });
         });
 }
@@ -107,12 +107,15 @@ var displayUvIndex = function (index) {
     uvIndexValue.textContent = index.value
 
     if (index.value <= 2) {
-        uvIndexValue.classList = "favorable"
-    } else if (index.value > 2 && index.value <= 8) {
-        uvIndexValue.classList = "moderate "
-    }
-    else if (index.value > 8) {
-        uvIndexValue.classList = "severe"
+        uvIndexValue.classList = "low"
+    } else if (index.value > 2 && index.value <= 5) {
+        uvIndexValue.classList = "medium"
+    } else if (index.value > 5 && index.value <= 7) {
+        uvIndexValue.classList = "high"
+    } else if (index.value > 7 && index.value <= 10) {
+        uvIndexValue.classList = "very-high"
+    } else if (index.value > 10) {
+        uvIndexValue.classList = "extremely-high"
     };
 
     uvIndexEl.appendChild(uvIndexValue);
@@ -128,10 +131,12 @@ var get5Day = function (city) {
     fetch(apiURL)
         .then(function (response) {
             response.json().then(function (data) {
+                console.log(data)
                 display5Day(data);
             });
         });
 };
+
 
 var display5Day = function (weather) {
     forecastContainerEl.textContent = ""
@@ -154,6 +159,8 @@ var display5Day = function (weather) {
         forecastEl.appendChild(forecastDate);
 
 
+
+
         //create an image element
         var weatherIcon = document.createElement("img")
         weatherIcon.classList = "card-body text-center";
@@ -165,19 +172,25 @@ var display5Day = function (weather) {
         //create temperature span
         var forecastTempEl = document.createElement("span");
         forecastTempEl.classList = "card-body text-center";
-        forecastTempEl.textContent = dailyForecast.main.temp + " °F";
+        forecastTempEl.textContent = "Temp: " + dailyForecast.main.temp + " °F";
 
-        //append to forecast card
+
         forecastEl.appendChild(forecastTempEl);
 
         var forecastHumEl = document.createElement("span");
         forecastHumEl.classList = "card-body text-center";
-        forecastHumEl.textContent = dailyForecast.main.humidity + "  %";
+        forecastHumEl.textContent = "Humidity: " + dailyForecast.main.humidity + "  %";
 
         //append to forecast card
         forecastEl.appendChild(forecastHumEl);
 
-        // console.log(forecastEl);
+        var forecastWindEl = document.createElement("span");
+        forecastWindEl.classList = "card-body text-center";
+        forecastWindEl.textContent = "Wind: " + dailyForecast.wind.speed + " MPH";
+
+        // append to forecast card
+        forecastEl.appendChild(forecastWindEl);
+
         //append to five day container
         forecastContainerEl.appendChild(forecastEl);
     }
@@ -207,4 +220,5 @@ var pastSearchHandler = function (event) {
 }
 
 
-searchFormEl.addEventListener("submit", formSumbitHandler);
+searchFormEl.addEventListener("submit", formSubmitHandler);
+pastSearchButtonEl.addEventListener('click', pastSearchHandler);

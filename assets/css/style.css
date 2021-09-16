@@ -4,3 +4,35 @@ header {
     color: white;
     height: 60px;
 }
+
+#search-title {
+    color: rgb(38, 38, 141);
+}
+
+#search-button {
+    background-color: rgb(38, 38, 141);
+}
+
+/* UV Index Conditions */
+
+.low {
+    background-color: rgb(139, 253, 25);
+}
+
+.medium {
+    background-color: rgb(250, 250, 18);
+}
+
+.high {
+    background-color: rgb(224, 173, 44);
+}
+
+.very-high {
+    background-color: rgb(221, 0, 0);
+    color: white
+}
+
+.extremely-high {
+    background-color: rgb(128, 0, 60);
+    color: white;
+}
