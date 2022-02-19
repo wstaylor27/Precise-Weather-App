@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This was my sixth homework assignment. In order to complete the acceptance criteria, we must accomplish the following:
+In order to complete the acceptance criteria, we must accomplish the following:
 
 ```md
 GIVEN a weather dashboard with form inputs
